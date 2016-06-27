@@ -159,4 +159,37 @@ public class Solution{
         return i%4 == 0 ? false: true;
     }
 
+    public static boolean hasIntegerCubeRoot(int n) {
+
+        if (n == 0){
+            return false;
+        }
+
+        if (n == 1){
+            return true;
+        }
+
+        for (int i = 0; i < n/2; i++) {
+            if (i*i*i == n) return true;
+        }
+        return false;
+    }
+
+
+    public static boolean isPowerOfThree(int n) {
+        if (n == 1) return true;
+        if (n == 0) return false;
+        if (n%3 ==0) return isPowerOfThree(n/3);
+        return false;
+    }
+
+    public static boolean isPowerOfThreeIteration(int n) {
+        if (n < 1) return false;
+        while ( n > 0){
+            if (n==1) return true;
+            if (n%3 == 0) n = n/3;
+            else return false;
+        }
+        return true;
+    }
 }

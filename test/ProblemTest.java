@@ -97,13 +97,52 @@ public class ProblemTest {
         
     }
 
+    public static class IntegerCubeRoot {
+
+        @Test
+        public void shouldReturnTrueFor1() {
+            assertThat(Solution.hasIntegerCubeRoot(1), is(true));
+        }
+
+        @Test
+        public void shouldReturnFalseFor2() {
+            assertThat(Solution.hasIntegerCubeRoot(2), is(false));
+        }
+
+        @Test
+        public void shouldReturnTrueFor8() {
+            assertThat(Solution.hasIntegerCubeRoot(8), is(true));
+        }
+        
+    }
+
     public static class PowerOfThree{
 
         @Test
-        public void should() {
-            
+        public void shouldReturnTrueFor1() {
+            assertThat(Solution.isPowerOfThree(1), is(true));
         }
-        
+
+        @Test
+        public void shouldReturnTrueFor3And9() {
+            assertThat(Solution.isPowerOfThree(3), is(true));
+            assertThat(Solution.isPowerOfThree(9), is(true));
+        }
+
+        @Test
+        public void shouldReturnTrueFor8() {
+            assertThat(Solution.isPowerOfThree(8), is(false));
+        }
+
+
+        @Test
+        public void testIsPowerOfThreeIteration() {
+            assertThat(Solution.isPowerOfThreeIteration(0), is(false));
+            assertThat(Solution.isPowerOfThreeIteration(1), is(true));
+            assertThat(Solution.isPowerOfThreeIteration(8), is(false));
+            assertThat(Solution.isPowerOfThreeIteration(9), is(true));
+        }
+
     }
     
 }
