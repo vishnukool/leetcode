@@ -1011,11 +1011,14 @@ public class Solution {
 
     public static int reverseInteger(int x) {
         int newNum = 0;
+        boolean isNegative = x<0 ? true: false;
+        if (isNegative) x*= -1;
         while (x!=0){
+            if (newNum!= 0 && (Integer.MAX_VALUE -x%10)/newNum < 10) return 0;
             newNum=newNum*10+(x%10);
             x/=10;
         }
-        return newNum;
+        return isNegative ? newNum*-1: newNum;
     }
 
 
