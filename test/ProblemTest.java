@@ -1,11 +1,11 @@
-import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Test;
 
+import java.io.Console;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Set;
 import java.util.stream.IntStream;
 
 import static org.hamcrest.core.Is.is;
@@ -369,4 +369,345 @@ public class ProblemTest {
 
     }
 
+    public static class IsomorphicIntegers {
+
+        @Test
+        public void shouldIdentifyIsomorphicIntegers() {
+            assertThat(Solution.isIsomorphic("ab", "aa"), is(false));
+        }
+
+    }
+
+    public static class CompareVersion {
+
+        @Test
+        public void shouldCompareVersion() {
+            assertThat(Solution.compareVersion("1", "0"), is(1));
+        }
+
+    }
+
+    public static class PascalsTraingle2 {
+
+        @Test
+        public void shouldWhatever() {
+            ArrayList<Integer> integers = new ArrayList<>(10);
+            Solution.getRow(2);
+        }
+
+    }
+
+    public static class ConvertToTile {
+
+        @Test
+        public void shouldConvert26toZ() {
+            assertThat(Solution.convertToTitle(26), is("Z"));
+        }
+
+    }
+
+    public static class RotateArrayInPlace {
+
+        @Test
+        public void shouldRotateArray() {
+            int[] nums = {1, 2, 3};
+            Solution.rotateInPlace(nums, 2);
+            assertThat(nums, is(new int[]{2, 3, 1}));
+        }
+
+    }
+
+    public static class RectangleArea {
+
+        @Test
+        public void shouldComputeIntersectingRectangleArea() {
+            assertThat(Solution.computeArea(0, 0, 1, 1, 10, 10, 11, 11), is(2));
+            assertThat(Solution.computeArea(-3, 0, 3, 4, 0, -1, 9, 2), is(45));
+        }
+
+    }
+
+    public static class MergeSortedArray {
+
+        @Test
+        public void shouldmergeArray() {
+            Solution.merge(new int[]{1, 0}, 1, new int[]{2}, 1);
+        }
+
+    }
+
+    public static class PalindromeLinkedList {
+
+        @Test
+        public void shouldTestPalindromeLinkedList() {
+            ListNode l1 = new ListNode(1);
+            ListNode l2 = new ListNode(0);
+            ListNode l3 = new ListNode(3);
+            ListNode l4 = new ListNode(4);
+            ListNode l5 = new ListNode(0);
+            ListNode l6 = new ListNode(1);
+
+            l1.next = l2;
+            l2.next = l3;
+            l3.next = l4;
+            l4.next = l5;
+            l5.next = l6;
+
+            boolean isPalindrome = Solution.isPalindrome(l1);
+            assertTrue(!isPalindrome);
+        }
+
+    }
+
+    public static class LongestSubstringNonRepeatingCharacters {
+
+        @Test
+        public void shouldTest() {
+            assertThat(Solution.lengthOfLongestSubstring(null), is(0));
+            assertThat(Solution.lengthOfLongestSubstring(""), is(0));
+            assertThat(Solution.lengthOfLongestSubstring("pwwkew"), is(3));
+            assertThat(Solution.lengthOfLongestSubstring("a"), is(1));
+            assertThat(Solution.lengthOfLongestSubstring("aa"), is(1));
+            assertThat(Solution.lengthOfLongestSubstring("aabb"), is(2));
+            assertThat(Solution.lengthOfLongestSubstring("abba"), is(2));
+            assertThat(Solution.lengthOfLongestSubstring("dvdf"), is(3));
+        }
+
+    }
+
+    public static class FourSum {
+
+        @Test
+        public void shouldTest() {
+            int[] nums = {1, 0, -1, 0, -2, 2};
+            List<List<Integer>> fourSum = Solution.fourSum(nums, 0);
+            assertThat(fourSum.size(), is(3));
+            System.out.print(fourSum);
+        }
+
+    }
+
+    public static class CountAndSay {
+
+        @Test
+        public void should() {
+            assertThat(Solution.countAndSay(1), is("1"));
+            assertThat(Solution.countAndSay(2), is("11"));
+            assertThat(Solution.countAndSay(3), is("21"));
+            assertThat(Solution.countAndSay(4), is("1211"));
+            assertThat(Solution.countAndSay(5), is("111221"));
+        }
+
+        @Test
+        public void shouldTestStringWaala() {
+            assertThat(Solution.countAndSayStrings(1), is("1"));
+            assertThat(Solution.countAndSayStrings(2), is("11"));
+            assertThat(Solution.countAndSayStrings(3), is("21"));
+            assertThat(Solution.countAndSayStrings(4), is("1211"));
+            assertThat(Solution.countAndSayStrings(5), is("111221"));
+        }
+
+    }
+
+    public static class ZeroMatrix {
+
+        @Test
+        public void shouldSetZeroes() {
+            int[][] matrix = new int[][]{{0, 0, 0, 5}, {4, 3, 1, 4}, {1, 2, 1, 3}, {0, 0, 1, 1}};
+            Solution.setZeroesNoExtraSpace(matrix);
+        }
+
+    }
+
+    public static class ValidSudoku {
+
+        @Test
+        public void shouldTest() {
+            char[][] board = createBoard();
+            board[0][0] = '1';
+            board[0][8] = '1';
+            char[][] board2 = createBoard();
+            board2[0][0] = '1';
+            board2[8][0] = '1';
+            char[][] board3 = createBoard();
+            board3[0][0] = '1';
+            board3[2][2] = '1';
+            char[][] board4 = createBoard();
+
+
+            assertFalse(Solution.isValidSudoku(board));
+            assertFalse(Solution.isValidSudoku(board2));
+            assertFalse(Solution.isValidSudoku(board3));
+            assertTrue(Solution.isValidSudoku(board4));
+        }
+
+        private char[][] createBoard() {
+            char[][] board = new char[9][9];
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    board[i][j] = '.';
+                }
+            }
+            return board;
+        }
+
+    }
+
+    public static class ZigZag {
+
+        @Test
+        public void shouldZigZag() {
+            assertThat(Solution.convertZigZag("A", 1), is("A"));
+            assertThat(Solution.convertZigZag("PAYPALISHIRING", 3), is("PAHNAPLSIIGYIR"));
+            assertThat(Solution.convertZigZag("PAYPALISHIRING", 4), is("PINALSIGYAHRPI"));
+        }
+
+    }
+
+    public static class BullsAndCows {
+
+        @Test
+        public void should() {
+            assertThat(Solution.getHint("1123", "0111"),is("1A1B"));
+        }
+
+    }
+
+    public static class AddBinary {
+
+        @Test
+        public void should() {
+            assertThat(Solution.addBinary("1", "11"), is("100"));
+            assertThat(Solution.addBinary("1", "111"), is("1000"));
+        }
+
+    }
+
+    public static class ReverseBits {
+
+        @Test
+        public void shouldReverseBits() {
+            assertThat(Solution.reverseBits(43261596), is(964176192));
+        }
+
+    }
+
+    public static class StrStr {
+
+        @Test
+        public void shouldStrStr() {
+            assertThat(Solution.strStrKmp("a", "a"), is(0));
+            assertThat(Solution.strStrKmp("abc", "bc"), is(1));
+        }
+
+        @Test
+        public void shouldKmpPrefix() {
+            assertThat(Solution.getNext("abcaby"), is(new int[]{0,0,0,1,2,0}));
+            assertThat(Solution.getNext("abcdabca"), is(new int[]{0,0,0,0,1,2,3,1}));
+            assertThat(Solution.getNext("aabaabaaa"), is(new int[]{0,1,0,1,2,3,4,5,2}));
+            assertThat(Solution.getNext("acacabacacabacacac"), is(new int[]{0,0,1,2,3,0,1,2,3,4,5,6,7,8,9,10,11,4}));
+        }
+
+
+    }
+
+    public static class LongestPalindromicSubstring {
+
+        @Test
+        public void shouldReturnLongestPalindrome() {
+            assertThat(Solution.longestPalindrome("abcdcaa"), is("cdc"));
+            assertThat(Solution.longestPalindrome("abcddcaa"), is("cddc"));
+        }
+
+        @Test
+        public void shouldReturnLongestPalindromeManachers() {
+            assertThat(Solution.longestPalindromeManacher("abcdcaa"), is("cdc"));
+            assertThat(Solution.longestPalindromeManacher("abaxabaxabb"), is("baxabaxab"));
+            assertThat(Solution.longestPalindromeManacher("abcddcaa"), is("cddc"));
+        }
+
+    }
+
+    public static class AddLinkedListNumbers {
+
+        @Test
+        public void should() {
+            ListNode l1 = new ListNode(9);
+            l1.next = new ListNode(8);
+
+            ListNode l2 = new ListNode(1);
+
+            ListNode result = Solution.addTwoNumbers(l1, l2);
+            assertThat(result.val,is(0));
+            assertThat(result.next.val,is(9));
+        }
+
+    }
+
+    public static class NextPermutation {
+
+        @Test
+        public void should() {
+            int[] nums = {1, 3, 2};
+            Solution.nextPermutationEfficient(nums);
+            assertThat(nums, is(new int[]{2,1,3}));
+
+//            int[] nums2 = {3, 2, 1};
+//            Solution.nextPermutation(nums2);
+//            assertThat(nums2, is(new int[]{1,2,3}));
+
+        }
+
+    }
+
+    public static class Permutation {
+
+        @Test
+        public void should() {
+            Solution.permuteEfficient(new int[]{1, 2, 3, 4});
+        }
+
+    }
+
+    public static class SingleNumber2 {
+
+        @Test
+        public void should() {
+            assertThat(Solution.singleNumber2(new int[]{1,1,1,2}), is(2));
+        }
+
+    }
+
+    public static class LongestSequence {
+
+        @Test
+        public void shouldReturn0ForNull() {
+            assertThat(Solution.getLongestSequence(null), is(0));
+        }
+
+        @Test
+        public void shouldReturn0ForEmptyString() {
+            assertThat(Solution.getLongestSequence(""), is(0));
+        }
+
+
+        @Test
+        public void shouldReturn3Forabcabc() {
+            assertThat(Solution.getLongestSequence("ababab"), is(2));
+            assertThat(Solution.getLongestSequence("abcabc"), is(3));
+            assertThat(Solution.getLongestSequence("abcadc"), is(4));
+        }
+
+    }
+
+    public static class BeautifulAranta {
+
+        @Test
+        public void shouldPass() {
+            assertThat(Solution.reduce(new int[]{3,1,2,3}), is(9));
+            assertThat(Solution.reduce(new int[]{4,1,2,3,4}), is(19));
+        }
+
+    }
+    
 }
